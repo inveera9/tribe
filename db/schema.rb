@@ -11,8 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150616221146) do
+ActiveRecord::Schema.define(version: 20150710163104) do
+
+  create_table "attachinary_files", force: true do |t|
+    t.integer  "attachinariable_id"
+    t.string   "attachinariable_type"
+    t.string   "scope"
+    t.string   "public_id"
+    t.string   "version"
+    t.integer  "width"
+    t.integer  "height"
+    t.string   "format"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "attachinary_files", ["attachinariable_type", "attachinariable_id", "scope"], name: "by_scoped_parent"
 
   create_table "commontator_comments", force: true do |t|
     t.string   "creator_type"
@@ -55,9 +70,6 @@ ActiveRecord::Schema.define(version: 20150616221146) do
   end
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true
-=======
-ActiveRecord::Schema.define(version: 20150612221416) do
->>>>>>> e977655d6a4fe39b980814bcec520058317f8029
 
   create_table "pins", force: true do |t|
     t.string   "description"
@@ -114,6 +126,10 @@ ActiveRecord::Schema.define(version: 20150612221416) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

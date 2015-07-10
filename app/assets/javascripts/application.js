@@ -13,6 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+
+//= require jquery.ui.widget
+
+//= require cloudinary/jquery.cloudinary
+//= require attachinary
+
 //= require jquery.turbolinks
 //= require turbolinks
 //= require masonry/jquery.masonry
@@ -21,3 +27,4 @@
 //= require masonry/jquery.infinitescroll.min
 //= require masonry/modernizr-transitions
 //= require_tree .
+
