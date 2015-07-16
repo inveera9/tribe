@@ -6,11 +6,8 @@ class User < ActiveRecord::Base
   
   has_many :pins
   validates :name, presence: true
-  
+  has_attachment  :avatar, accept: [:jpg, :png, :gif]
+  validates :name, presence: true
   acts_as_commontator
-
-has_attachment  :avatar, accept: [:jpg, :png, :gif]
-validates :avatar, presence: true
-
-
+		
 end

@@ -37,4 +37,5 @@ Rails.application.configure do
 
   # Required fro Heroku
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+   config.assets.compile = true
 end

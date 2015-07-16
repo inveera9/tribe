@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
 
-      <a class="navbar-brand" href="#">KantzTribe</a>
+      <a class="navbar-brand" href="#">KTribe</a>
 
     </div>
 
@@ -23,7 +23,7 @@
         <% if user_signed_in? %>
           <li>
             <%= link_to new_user_invitation_path do %>
-              <span class="glyphicon glyphicon-plus"></span> Invite
+            <i class="fa fa-envelope"></i>  Invite
               <% end %>
           </li>
           <li>
@@ -33,7 +33,7 @@
           </li>
            <li>
             <%= link_to edit_user_registration_path do %>
-              <span class="glyphicon glyphicon-cog"></span> Settings
+              <i class="fa fa-cog"></i>  Settings
             <% end %>
           </li>
           <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>

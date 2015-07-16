@@ -7,7 +7,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading center">
 				
-    			<%= cl_image_tag(@pin.image.path, { size: '200x200', crop: :thumb, gravity: :face }) %>
+     			<%= cl_image_tag(@pin.image.path, :width => 1500, :height => 1500, :crop => :limit) %>
     			
 
 			</div

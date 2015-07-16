@@ -1,14 +1,18 @@
+
+
+
+
+
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
-
   
  <div class="form-group">
     <%= f.label :avatar %><br>
-    <% if @user.avatar? %>
-    <%= cl_image_tag(@user.avatar.path, { size: '50x50', crop: :thumb, gravity: :face }) %>
-    <% end %>
+      <% if @user.avatar? %>
+      <%= cl_image_tag(@user.avatar.path, :size => '100x100', :crop => :thumb, :gravity => :face, :radius => :max, :fetch_format => :png ) %>
+      <% end %>
     <%= f.attachinary_file_field :avatar %>
   </div>
 
@@ -51,5 +55,4 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
-
 

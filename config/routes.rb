@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'pins#index', as: :tag
 
   mount Commontator::Engine => '/commontator'
-  mount Attachinary::Engine => "/attachinary"
+  mount Attachinary::Engine => '/attachinary'
 
 
 
