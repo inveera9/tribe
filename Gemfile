@@ -25,6 +25,7 @@ gem 'cloudinary'
 gem 'attachinary'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'pg'
+gem 'activeadmin', '~> 1.0.0.pre1'
 
 group :development, :test do
      gem 'byebug'
