@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804065130) do
+ActiveRecord::Schema.define(version: 20150804112626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,12 @@ ActiveRecord::Schema.define(version: 20150804065130) do
 
   add_index "pins", ["user_id"], name: "index_pins_on_user_id", using: :btree
 
+  create_table "relationships", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -121,6 +127,35 @@ ActiveRecord::Schema.define(version: 20150804065130) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "tribe_members", force: true do |t|
+    t.integer  "tribe_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tribe_members", ["tribe_id"], name: "index_tribe_members_on_tribe_id", using: :btree
+  add_index "tribe_members", ["user_id"], name: "index_tribe_members_on_user_id", using: :btree
+
+  create_table "tribes", force: true do |t|
+    t.string   "tribe_name"
+    t.string   "description"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tribes", ["user_id"], name: "index_tribes_on_user_id", using: :btree
+
+  create_table "user_user_relations", force: true do |t|
+    t.string   "user_user_relation"
+    t.integer  "relationship_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_user_relations", ["relationship_id"], name: "index_user_user_relations_on_relationship_id", using: :btree
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: ""
@@ -134,7 +169,7 @@ ActiveRecord::Schema.define(version: 20150804065130) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
+    t.string   "fname"
     t.string   "invitation_token"
     t.datetime "invitation_created_at"
     t.datetime "invitation_sent_at"
@@ -143,6 +178,8 @@ ActiveRecord::Schema.define(version: 20150804065130) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.string   "mname"
+    t.string   "lname"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

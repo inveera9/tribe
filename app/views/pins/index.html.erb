@@ -9,7 +9,7 @@
      
       <div class="panel-body" padding: 5px>
         <span class="desc-font"><%= pin.description %></span><br>
-        <span class="name">- <%= pin.user.name if pin.user%></span>
+        <span class="name">- <%= pin.user.fname if pin.user%></span>
           <% if pin.user == current_user %>
             <div class="actions">
                

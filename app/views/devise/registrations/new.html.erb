@@ -10,8 +10,16 @@
     <%= devise_error_messages! %>
 
     <div class="form-group">
-         <%= f.label :name %>
-         <%= f.text_field :name, class: "form-control", :autofocus => true %>
+         <%= f.label :fname, 'First Name' %>
+         <%= f.text_field :fname, class: "form-control", :autofocus => true %>
+    </div>
+    <div class="form-group">
+         <%= f.label :mname, 'Maiden Name' %>
+         <%= f.text_field :mname, class: "form-control", :autofocus => true %>
+    </div>
+    <div class="form-group">
+         <%= f.label :lname, 'Last Name' %>
+         <%= f.text_field :lname, class: "form-control", :autofocus => true %>
     </div>
 
     <div class="form-group">
