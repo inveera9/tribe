@@ -24,13 +24,12 @@ gem 'commontator', '~> 4.10.0'
 gem 'cloudinary'
 gem 'attachinary'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
-
+gem 'pg'
 
 group :development, :test do
-     gem 'sqlite3'
+     gem 'byebug'
 end
 
-group :production do
-     gem 'pg'
+group :production do 
      gem 'rails_12factor'
 end
