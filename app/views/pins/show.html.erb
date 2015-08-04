@@ -14,7 +14,7 @@
 				<div class="panel-body">
 					<div class="container">
 						<p><%= @pin.description %></p>        
-						<p><strong><%= @pin.user.name if @pin.user%></strong></p>
+						<p><strong><%= @pin.user.fname if @pin.user%></strong></p>
 
 							<% if @pin.user == current_user %>
 								<%= link_to edit_pin_path(@pin) do %>
