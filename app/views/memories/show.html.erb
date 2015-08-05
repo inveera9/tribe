@@ -1,0 +1,37 @@
+<%= link_to 'Back', memories_path %>
+
+
+<div clas="row">
+
+	<div class="col-md-offset-2 col-md-8">
+		<div class="panel panel-default">
+			<div class="panel-heading center">
+				
+     			<%= cl_image_tag(@memory.image.path, :width => 700, :height => 700, :crop => :limit) %>
+     			<p><%= @memory.image_description %></p> 
+
+			</div
+				<div class="panel-body">
+					<div class="container">
+						<p><%= @memory.title %></p>        
+						<p><strong><%= @memory.description if @memory.description%></strong></p>
+
+							<% if @memory.user == current_user %>
+								<%= link_to edit_memory_path(@memory) do %>
+		        				<span class="glyphicon glyphicon-edit"></span>
+		        				Edit
+		      					<% end %>
+		      					<%= link_to @memory, method: :delete, data: { confirm: 'Are you sure?' } do %>
+		                		<span class="glyphicon glyphicon-trash"></span> Delete
+		                		<% end %>
+		                			<p>Tags:  <%= raw @memory.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+		                			
+
+      						<% end %>
+					</div>
+				</div>
+		</div>
+	</div>
+
+</div>
+

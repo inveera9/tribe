@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   resources :pins
-  #resources :tribes
+  resources :memories
 
   devise_for :users
   root 'pins#index'

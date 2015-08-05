@@ -1,0 +1,45 @@
+<%if @memories.length>0%>
+<div class="panel-heading">Memories</div>
+<%= button_to 'New Memory', new_memory_path, method: :get, class: 'pull-right' %>
+
+<div id="memories" class="transitions-enabled">
+  <% @memories.each do |memory| %>
+    <div class="box panel panel-default">
+    <span class="name"><strong><%= memory.title if memory.title%></strong></span><br/><br/>	
+     <%= link_to cl_image_tag(memory.image.path, :width => 400, :height => 400, :crop => :limit), memory %>
+     <p><%= memory.image_description %></p>
+      <div class="panel-body" padding: 5px>
+        <span class="desc-font"><%= memory.description %></span><br>
+        <% if memory.user == current_user %>
+            <div class="actions">
+               
+                <%= link_to edit_memory_path(memory) do %>
+                <i class="fa fa-edit"></i>  Edit     
+                <% end %>
+                
+                <%= link_to memory, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="fa fa-trash"></i>  Delete
+                <% end %>
+              
+              
+            </div>
+          <% end %>
+      </div>
+      
+    </div> 
+  <% end %>
+</div>
+<div class="center">
+<%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
+<%else%>
+<div class="panel panel-default">
+  <div class="panel-heading">Memories</div>
+  <div class="panel-body">
+   <span> No memories has been created yet.</span>
+   <div>
+   	<%= button_to 'New Memory', new_memory_path, method: :get, class: 'pull-right' %>
+   </div>
+  </div>
+</div>
+<%end%>

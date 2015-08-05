@@ -1,0 +1,7 @@
+<h1>Editing memory</h1>
+<%= cl_image_tag(@memory.image.path, { size: '200x200', crop: :thumb, gravity: :face }) %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @memory %> |
+<%= link_to 'Back', memories_path %>

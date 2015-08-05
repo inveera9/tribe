@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   
   has_many :pins
   has_many :tribes
+  has_many :memories
   validates :fname, presence: true
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
   acts_as_commontator
