@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805093337) do
+ActiveRecord::Schema.define(version: 20150806103624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -92,10 +92,19 @@ ActiveRecord::Schema.define(version: 20150805093337) do
 
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true, using: :btree
 
+  create_table "memorabilias", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "memory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "memorabilias", ["memory_id"], name: "index_memorabilias_on_memory_id", using: :btree
+
   create_table "memories", force: true do |t|
     t.string   "title"
     t.string   "description"
-    t.string   "image_description"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -4,8 +4,7 @@
   <% @memories.each do |memory| %>
     <div class="box panel panel-default">
     <span class="name"><strong><%= memory.title if memory.title%></strong></span><br/><br/>	
-     <%= link_to cl_image_tag(memory.image.path, :width => 400, :height => 400, :crop => :limit), memory if memory.image%>
-     <p><%= memory.image_description if memory.image%></p>
+     
       <div class="panel-body" padding: 5px>
         <span class="desc-font"><%= memory.description %></span><br>
         <% if memory.user == current_user %>
