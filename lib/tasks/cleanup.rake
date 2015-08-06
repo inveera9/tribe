@@ -5,6 +5,8 @@ task 'cleanup' => :environment do
   begin
     puts "**************** Cleanup Start ********************"
      
+    Memorable.destroy_all
+    puts "Memorable deleted"
     Memory.destroy_all
     puts "Memories deleted"
     Pin.destroy_all
