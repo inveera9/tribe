@@ -20,6 +20,16 @@
               
               
             </div>
+            <div class="actions">
+              <%= link_to new_memory_memorable_path(memory) do %>
+                <i class="fa fa-add"></i>  Add Memorabilia     
+                <% end %>
+            </div>
+            <div class="actions">
+              <%= link_to memory_memorables_path(memory) do %>
+                <i class="fa fa-add"></i>  View Memorabilia     
+                <% end %>
+            </div>
           <% end %>
       </div>
       

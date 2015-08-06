@@ -1,6 +1,6 @@
-class CreateMemorabilia < ActiveRecord::Migration
+class CreateMemorable < ActiveRecord::Migration
   def change
-    create_table :memorabilias do |t|
+    create_table :memorables do |t|
       t.string :title
       t.string :description
       t.references :memory, index: true

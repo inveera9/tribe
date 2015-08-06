@@ -1,0 +1,8 @@
+<h1>Editing memorabilia</h1>
+
+<%= cl_image_tag(@memorable.image.path, { size: '200x200', crop: :thumb, gravity: :face }) %>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', memory_memorable_path(@memory.id,@memorable) %> |
+<%= link_to 'Back', memory_memorables_path %>
