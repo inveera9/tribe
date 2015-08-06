@@ -6,8 +6,18 @@ class MemoriesController < ApplicationController
 
 
   def index
-    @memories = Memory.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
-    respond_with(@memories)
+
+    if params[:tag]
+      @memories = Memory.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+    else
+      if  user_signed_in?
+        @memories = current_user.memories.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+
+      else
+        @memories = Memory.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+      end
+      respond_with(@memories)
+    end
   end
 
   def new
@@ -39,16 +49,16 @@ class MemoriesController < ApplicationController
   end
 
   private
-    def set_memory
-      @memory = Memory.find(params[:id])
-    end
+  def set_memory
+    @memory = Memory.find(params[:id])
+  end
 
-    def correct_user
-      @memory = current_user.memories.find_by(id: params[:id])
-      redirect_to memories_path, notice: "not authorized by KK to edit this memory" if @memory.nil?
-    end
+  def correct_user
+    @memory = current_user.memories.find_by(id: params[:id])
+    redirect_to memories_path, notice: "not authorized by KK to edit this memory" if @memory.nil?
+  end
 
-    def memory_params
-      params.require(:memory).permit(:description, :image, :title, :image_description,:tag_list)
-    end
+  def memory_params
+    params.require(:memory).permit(:description, :image, :title, :image_description,:tag_list)
+  end
 end

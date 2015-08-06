@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   resources :memories
 
   devise_for :users
-  root 'pins#index'
+  #root 'pins#index'
+  root 'memories#index'
   get 'about' =>'pages#about'
-  get 'tags/:tag', to: 'pins#index', as: :tag
+  #get 'tags/:tag', to: 'pins#index', as: :tag
+  get 'tags/:tag', to: 'memories#index', as: :tag
 
   mount Commontator::Engine => '/commontator'
   mount Attachinary::Engine => '/attachinary'

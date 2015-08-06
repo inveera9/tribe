@@ -7,8 +7,8 @@
 		<div class="panel panel-default">
 			<div class="panel-heading center">
 				
-     			<%= cl_image_tag(@memory.image.path, :width => 700, :height => 700, :crop => :limit) %>
-     			<p><%= @memory.image_description %></p> 
+     			<%= cl_image_tag(@memory.image.path, :width => 700, :height => 700, :crop => :limit) if @memory.image%>
+     			<p><%= @memory.image_description if @memory.image%></p> 
 
 			</div
 				<div class="panel-body">
