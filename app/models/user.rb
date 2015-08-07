@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   
-  has_many :pins
-  has_many :tribes
-  has_many :memories
+  has_many :pins, dependent: :destroy
+  has_many :tribes, dependent: :destroy
+  has_many :memories, dependent: :destroy
   validates :fname, presence: true
   has_attachment  :avatar, accept: [:jpg, :png, :gif]
   acts_as_commontator

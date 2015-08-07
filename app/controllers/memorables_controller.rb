@@ -39,7 +39,8 @@ class MemorablesController < ApplicationController
 
   def update
     @memorable.update(memorable_params)
-    respond_with(@memorable)
+    # respond_with(@memorable)
+    redirect_to  memory_memorable_path
   end
 
   def destroy
@@ -59,6 +60,6 @@ class MemorablesController < ApplicationController
   end
 
   def memorable_params
-    params.require(:memorable).permit(:description, :image, :title, :image_description,:tag_list)
+    params.require(:memorable).permit(:description, :title, :image_description,:tag_list,:images=>[])
   end
 end

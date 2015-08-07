@@ -9,6 +9,7 @@ class MemoriesController < ApplicationController
 
     if params[:tag]
       @memories = Memory.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+      @memorables = Memorable.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
     else
       if  user_signed_in?
         @memories = current_user.memories.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
@@ -59,6 +60,6 @@ class MemoriesController < ApplicationController
   end
 
   def memory_params
-    params.require(:memory).permit(:description, :image, :title, :image_description,:tag_list)
+    params.require(:memory).permit(:description, :title, :image_description,:tag_list,:images=>[])
   end
 end
