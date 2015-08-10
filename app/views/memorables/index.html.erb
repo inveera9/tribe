@@ -1,5 +1,9 @@
 <%= render 'pages/home' unless user_signed_in? %>
-
+<% if @memorable.blank? %>
+<div class="center">
+  No Memorabilia has been created yet. <%= link_to 'Create New', new_memory_memorable_path(@memory) %> 
+</div>              
+<%end%>
 <div id="memorables" class="transitions-enabled">
   <% @memorables.each do |memorable| %>
     <div class="box panel panel-default">

@@ -1,36 +1,29 @@
 <%= link_to 'Back', memories_path %>
-
-
 <div clas="row">
-
 	<div class="col-md-offset-2 col-md-8">
 		<div class="panel panel-default">
 			
-				<div class="panel-body">
-					<div class="container">
-						<p><%= @memory.title %></p>        
-						<p><strong><%= @memory.description if @memory.description%></strong></p>
+			<div class="panel-body">
+				<div class="container">
+					<p><%= @memory.title %></p>        
+					<p><strong><%= @memory.description if @memory.description%></strong></p>
 
-							<% if @memory.user == current_user %>
-								<%= link_to edit_memory_path(@memory) do %>
-		        				<span class="glyphicon glyphicon-edit"></span>
-		        				Edit
-		      					<% end %>
-		      					<%= link_to @memory, method: :delete, data: { confirm: 'Are you sure?' } do %>
-		                		<span class="glyphicon glyphicon-trash"></span> Delete
-		                		<% end %>
-		                			<p>Tags:  <%= raw @memory.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
-		                			
-		    <div class="actions">
-              <%= link_to new_memory_memorable_path(@memory) do %>
-                <i class="fa fa-add"></i>  Add Memorabilia     
-                <% end %>
-            </div>
-      						<% end %>
-					</div>
+					<% if @memory.user == current_user %>
+					<%= link_to edit_memory_path(@memory) do %>
+					<span class="glyphicon glyphicon-edit"></span>
+					Edit
+					<% end %>
+					<%= link_to @memory, method: :delete, data: { confirm: 'Are you sure?' } do %>
+					<span class="glyphicon glyphicon-trash"></span> Delete
+					<% end %>
+					<p>Tags:  <%= raw @memory.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+
+					<%= link_to new_memory_memorable_path(@memory) do %>
+					<i class="fa fa-add"></i>  Add Memorabilia     
+					<% end %>
+					<% end %>
 				</div>
+			</div>
 		</div>
 	</div>
-
 </div>
-
