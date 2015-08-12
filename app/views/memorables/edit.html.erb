@@ -4,7 +4,7 @@
 <% @memorable.images.each do |image| %>
 	<%= cl_image_tag(image.path, { size: '200x200', crop: :thumb, gravity: :face }) %>
 <%end%>
-<%= render 'form' %>
+<%= render 'updateform' %>
 
 <%= link_to 'Show', memory_memorable_path(@memory.id,@memorable) %> |
 <%= link_to 'Back', memory_memorables_path %>

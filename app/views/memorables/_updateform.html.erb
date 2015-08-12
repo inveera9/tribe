@@ -1,0 +1,34 @@
+<%= form_for [@memory, @memorable], html: { multipart: true } do |f| %>
+  <% if @memorable.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@memorable.errors.count, "error") %> prohibited this memorable from being saved:</h2>
+
+      <ul>
+      <% @memorable.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title, 'Image Title'%><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.attachinary_file_field :images %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, 'Description' %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="form-group">
+  <%= f.label :tag_list, "Tags (seperated by commas)" %><br>
+  <%= f.text_field :tag_list %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-danger" %>
+  </div>
+<% end %>

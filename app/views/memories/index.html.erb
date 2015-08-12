@@ -6,6 +6,7 @@
     <span class="name"><strong><%= memory.title if memory.title%></strong></span><br/><br/>	
      
       <div class="panel-body" padding: 5px>
+        <span class="desc-font"><%= memory.description %></span><br>
         <% if memory.user == current_user %>
             <div class="actions">
                

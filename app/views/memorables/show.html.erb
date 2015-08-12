@@ -1,37 +1,5 @@
+<h1><%= @memory.title%></h1>
+
+<%= render 'showform' %>
+
 <%= link_to 'Back', memories_path %>
-
-
-<div clas="row">
-
-	<div class="col-md-offset-2 col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading center">
-				<% @memorable.images.each do |image| %>
-     			<%= cl_image_tag(image.path, :width => 1500, :height => 1500, :crop => :limit) %>
-    			<%end%>
-
-				</div>
-				<div class="panel-body">
-					<div class="container">
-						<p><%= @memorable.title %></p>        
-						<p><strong><%= @memorable.description if @memorable.description%></strong></p>
-
-							<% if @memorable.memory.user == current_user %>
-								<%= link_to edit_memory_memorable_path(@memory.id,@memorable) do %>
-		        				<span class="glyphicon glyphicon-edit"></span>
-		        				Edit
-		      					<% end %>
-		      					<%= link_to @memory_memorable_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
-		                		<span class="glyphicon glyphicon-trash"></span> Delete
-		                		<% end %>
-		                			<p>Tags:  <%= raw @memorable.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
-		                			
-
-      						<% end %>
-					</div>
-				</div>
-		</div>
-	</div>
-
-</div>
-

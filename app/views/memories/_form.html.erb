@@ -12,21 +12,14 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.label :title, 'Name'%><br>
+    <%= f.text_field :title,:placeholder => "Name your memory" %>
   </div>
   <div class="form-group">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :description, 'Description'%><br>
+    <%= f.text_field :description,:placeholder => "Describe your memory" %>
   </div>
-
-
   <div class="form-group">
-  <%= f.label :tag_list, "Tags (seperated by commas)" %><br>
-  <%= f.text_field :tag_list %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit class: "btn btn-danger" %>
+    <%= f.submit class: "btn btn-success btn-sm" %>
   </div>
 <% end %>
