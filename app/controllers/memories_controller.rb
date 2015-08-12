@@ -6,16 +6,16 @@ class MemoriesController < ApplicationController
 
 
   def index
-
+    page = params[:page]
+    per_page = 8
     if params[:tag]
-      @memories = Memory.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
-      @memorables = Memorable.tagged_with(params[:tag]).order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+      @memorables = Memorable.tagged_with(params[:tag]).order("created_at DESC").page(page).per(per_page)
     else
       if  user_signed_in?
-        @memories = current_user.memories.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+        @memories = current_user.memories.order("created_at DESC").page(page).per(per_page)
 
       else
-        @memories = Memory.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 8)
+        @memories = Memory.all.order("created_at DESC").page(page).per(per_page)
       end
       respond_with(@memories)
     end
@@ -29,7 +29,7 @@ class MemoriesController < ApplicationController
   def create
     @memory = current_user.memories.build(memory_params)
     @memory.save
-    respond_with(@memory)
+    redirect_to new_memory_memorable_path(@memory)
   end
 
   def show

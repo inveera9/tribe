@@ -1,19 +1,15 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :password, :password_confirmation, :first_name, 
-  :last_name, :address1, :address2, :address3,
-  :city, :state, :zip, :country, :phone, :status
+  permit_params :email, :password, :password_confirmation, 
+  :fname, :mname, :lname
 
 
   index do
     selectable_column
-    column :fname, :label => "First Name"
-    column :mname, :label => "Maiden Name"
-    column :lname, :label => "Last Name"
+    column :fname
+    column :mname
+    column :lname
     column :email
-    column :created_at do |resource|
-      resource.created_at.strftime("%B %d, %Y")
-    end
     actions
   end
 
@@ -22,16 +18,13 @@ ActiveAdmin.register User do
       row :email
       row :fname
       row :mname
-      row :lname
-      
-      
+      row :lname  
     end
-    
   end
 
-  filter :fname, :label => "First Name"
-  filter :mname, :label => "Maiden Name"
-  filter :lname, :label => "Last Name"
+  filter :fname
+  filter :mname
+  filter :lname
 
   
 
