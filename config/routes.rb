@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   root 'memories#index'
   get 'about' =>'pages#about'
   #get 'tags/:tag', to: 'pins#index', as: :tag
-  get 'tags/:tag', to: 'memories#index', as: :tag
+  get 'tags/:tag', to: 'memorables#index', as: :tag
 
   mount Commontator::Engine => '/commontator'
   mount Attachinary::Engine => '/attachinary'

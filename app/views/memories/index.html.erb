@@ -20,11 +20,13 @@
               
               
             </div>
+            <% if memory.memorables.blank? %>
             <div class="actions">
               <%= link_to new_memory_memorable_path(memory) do %>
                 <i class="fa fa-add"></i>  Add Memorabilia     
                 <% end %>
             </div>
+            <% end %>
             <div class="actions">
               <%= link_to memory_memorables_path(memory) do %>
                 <i class="fa fa-add"></i>  View Memorabilia     
@@ -34,37 +36,6 @@
       </div>
        
     </div> 
-  <% end %>
-  <% if !@memorables.blank?%>
-  <% @memorables.each do |memorable| %>
-    <div class="box panel panel-default">
-    <span class="name"><strong><%= memorable.title if memorable.title%></strong></span><br/><br/> 
-    <% memorable.images.each do |image| %> 
-     <%= link_to cl_image_tag(image.path, :width => 400, :height => 400, :crop => :limit) %>
-    <%end%>
-      <div class="panel-body" padding: 5px>
-        <span class="desc-font"><%= memorable.description %></span><br>
-        <% if memorable.memory.user == current_user %>
-            <div class="actions">
-                <%= link_to edit_memory_memorable_path(memorable.memory.id,memorable) do %>
-                <i class="fa fa-edit"></i>  Edit     
-                <% end %>
-                
-                <%= link_to memory_memorable_path(memorable.memory.id,memorable), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <i class="fa fa-trash"></i>  Delete
-                <% end %>
-              
-              
-            </div>
-            
-          <% end %>
-      </div>
-      <div class="panel-footer">
-        Tags:  <%= raw memorable.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-
-      </div>
-    </div> 
-  <% end %>
   <% end %>
 </div>
 

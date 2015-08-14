@@ -8,14 +8,18 @@ class MemorablesController < ApplicationController
   def index
     page = params[:page]
     per_page = 8
-    if  user_signed_in?
-      @memory =  current_user.memories.find(params[:memory_id])
-      @memorables = @memory.memorables.order("created_at DESC").page(page).per(per_page)
-
+    if params[:tag]
+      @memorables = Memorable.tagged_with(params[:tag]).order("created_at DESC").page(page).per(per_page)
     else
-      @memorables = Memorable.all.order("created_at DESC").page(page).per(per_page)
+      if  user_signed_in?
+        @memory =  current_user.memories.find(params[:memory_id])
+        @memorables = @memory.memorables.order("created_at DESC").page(page).per(per_page)
+
+      else
+        @memorables = Memorable.all.order("created_at DESC").page(page).per(per_page)
+      end
+      respond_with(@memorables)
     end
-    respond_with(@memorables)
   end
 
   def new

@@ -1,34 +1,49 @@
 <%= form_for [@memory, @memorable], html: { multipart: true } do |f| %>
-  <% if @memorable.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@memorable.errors.count, "error") %> prohibited this memorable from being saved:</h2>
+<% if @memorable.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@memorable.errors.count, "error") %> prohibited this memorable from being saved:</h2>
 
-      <ul>
-      <% @memorable.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="form-group">
-    <%= f.label :title, 'Image Title'%><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="form-group">
-    <%= f.label :image %>
-    <%= f.attachinary_file_field :images %>
-  </div>
-  <div class="form-group">
-    <%= f.label :description, 'Description' %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="form-group">
-  <%= f.label :tag_list, "Tags (seperated by commas)" %><br>
-  <%= f.text_field :tag_list %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit class: "btn btn-danger" %>
-  </div>
+  <ul>
+    <% @memorable.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
+
+<div class='row'>&nbsp;</div>
+<div class='form-group'>
+  <p>Memorabilia consists of photos, videos and documents that are associated with the memory.</p>
+  <p>Go ahead and select some to add to your memory.</p>
+</div>
+<div class="form-group">
+<%= f.attachinary_file_field :images,:id=>'memorableImage' %>
+</div>
+<div class="form-group">
+
+  <% @memorable.images.each do |image| %>
+  <div class="box panel-body">
+    <div class="form-group">
+     <%= cl_image_tag(image.path, :width => 1500, :height => 1500, :crop => :limit) %>
+   </div>
+   <div class="form-group">
+     <%= f.label :tag_list, "Tags (seperated by commas)" %>
+     <%= f.text_field :tag_list %>
+   </div>
+ </div>
+ <%end%>
+</div>
+<div style="clear:both"></div>
+<div class="form-group">
+  <%= f.label :tag_list, "Tags for Memorabilia (seperated by commas)" %>
+  <%= f.text_field :tag_list %>
+</div>
+<div class='form-group'>
+  <!-- <div class="col-lg-2">Add Memorabilia</div> -->
+
+  <div class=""> 
+    <%= f.submit 'Done with Memorabilia for now!', :class=> "btn btn-success btn-sm" %>
+  </div>
+</div>
+<% end %>
+
