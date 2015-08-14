@@ -35,8 +35,8 @@
 <div class='form-group'>
   <!-- <div class="col-lg-2">Add Memorabilia</div> -->
 
-  <div class=""> 
-    <%= f.submit 'Done with Memorabilia for now!', :class=> "btn btn-success btn-sm" %>
+  <div class="btn btn-success btn-sm pinshowdiv">
+    <%= link_to "Done With Memorabilia for Now!", memory_memorables_path(@memory),:class=>'pinshowaction'%> 
   </div>
 </div>
 <% end %>
